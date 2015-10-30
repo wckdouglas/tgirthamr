@@ -233,3 +233,49 @@ DataFrame transformDF (DataFrame df, double seqErr, double pCutOff, Function bin
 	df["abbrev"] = mergedAbbrev;
 	return df;
 }
+
+//[[Rcpp::export]]
+DataFrame transformPredict (DataFrame df, double seqErr, double pCutOff, Function binom)
+{
+	NumericVector A = df["A"], C = df["C"], T = df["T"], G = df["G"];
+	NumericVector cov = df["cov"], deletion = df["deletion"];
+	int nrow = A.size();
+
+	//result vector
+	NumericVector mismatch(nrow), adjustedCov(nrow);
+	NumericVector newA(nrow), newC(nrow), newT(nrow), newG(nrow),newDeletion(nrow);
+	NumericVector p1(nrow),padj1(nrow),het(nrow),p2(nrow),padj2(nrow);
+    int predictorSums = 0 ;
+	double cov_i, mismatch_i;
+	for (int i = 0; i < A.size(); i++)
+	{
+		mismatch_i = A[i] + C[i] + T[i] + G[i] + deletion[i];
+        predictorSums = mismatch_i;
+		cov_i = cov[i];
+		adjustedCov[i] = cov_i;
+		mismatch[i] = mismatch_i;
+		newA[i] = A[i]/predictorSums;
+		newC[i] = C[i]/predictorSums;
+		newT[i] = T[i]/predictorSums;
+		newG[i] = G[i]/predictorSums;
+        newDeletion[i] =  deletion[i]/predictorSums;
+		p1[i] =	as<double>(binom(mismatch_i - deletion[i],cov_i,seqErr));
+		het[i] = heterozygotePerBase(A[i],C[i],T[i],G[i],cov[i],deletion[i]);
+		p2[i] = as<double>(binom(het[i]-deletion[i],cov_i,seqErr));
+	}
+	padj1 = fdr_control(p1,pCutOff);
+	padj2 = fdr_control(p2,pCutOff);
+	df["A"] = newA;
+	df["T"] = newT;
+	df["C"] = newC;
+	df["G"] = newG;
+	df["mismatch"] = mismatch;
+	df["cov"] = adjustedCov;
+	df["p1"] = p1;
+	df["p2"] = p2;
+	df["padj1"] = padj1;
+	df["padj2"] = padj2;
+	df["het"] = het;
+	df["deletion"] = newDeletion;
+	return df;
+}

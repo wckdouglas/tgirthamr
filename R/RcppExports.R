@@ -17,3 +17,7 @@ transformDF <- function(df, seqErr, pCutOff, binom) {
     .Call('tgirthamr_transformDF', PACKAGE = 'tgirthamr', df, seqErr, pCutOff, binom)
 }
 
+transformPredict <- function(df, seqErr, pCutOff, binom) {
+    .Call('tgirthamr_transformPredict', PACKAGE = 'tgirthamr', df, seqErr, pCutOff, binom)
+}
+

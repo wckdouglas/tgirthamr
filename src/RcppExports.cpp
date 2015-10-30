@@ -59,3 +59,17 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// transformPredict
+DataFrame transformPredict(DataFrame df, double seqErr, double pCutOff, Function binom);
+RcppExport SEXP tgirthamr_transformPredict(SEXP dfSEXP, SEXP seqErrSEXP, SEXP pCutOffSEXP, SEXP binomSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< DataFrame >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< double >::type seqErr(seqErrSEXP);
+    Rcpp::traits::input_parameter< double >::type pCutOff(pCutOffSEXP);
+    Rcpp::traits::input_parameter< Function >::type binom(binomSEXP);
+    __result = Rcpp::wrap(transformPredict(df, seqErr, pCutOff, binom));
+    return __result;
+END_RCPP
+}
