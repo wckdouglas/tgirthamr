@@ -1,11 +1,11 @@
 Package: tgirthamr
 Type: Package
-Title: What the package does (short line)
+Title: Thermostable Group II intron Reverse transcriptase high-throughput annotation of modified base
 Version: 1.0
 Date: 2015-10-30
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: More about what it does (maybe more than one line)
+Author: Douglas Wu
+Maintainer: Douglas Wu <wckdouglas@gmail.com>
+Description: This package intends to speed up the analysis of TGIRT-HAMR. and is needed for the tgirt-hamr softwares
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.1)
 LinkingTo: Rcpp

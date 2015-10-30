@@ -48,6 +48,7 @@ NumericVector indexSort(NumericVector p)
 // using a vector of p-values and false discovery rate threshold to
 // label all the significant results
 // where 1 is significant,  is insignificant
+//[[Rcpp::export]]
 NumericVector fdr_control(NumericVector p, double alpha)
 {
 	float threshold1, threshold2;

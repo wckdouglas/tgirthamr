@@ -3,31 +3,26 @@
 \alias{tgirthamr}
 \docType{package}
 \title{
-  A short title line describing what the package does
+  This package intends to speed up the analysis of TGIRT-HAMR. and is needed for the tgirt-hamr softwares
 }
 \description{
-  A more detailed description of what the package does. A length
-  of about one to five lines is recommended.
+ This package contains all of the computationally intense functions for the anlayses of tgirt-hamr, such as table transformation, pvalues extractions, etc.
 }
 \details{
-  This section should provide a more detailed overview of how to use the
-  package, including the most important functions.
+    The main function is transformPredict, which would takes in a table with mismatch counts, coverage and deletion counts for each aligned positions of tgirt-seq libraries and return a table with pvalues for the two hypotheses described in the paper.
+    In additional to the trnasform function, I also included a function for fast FDR control taking in a vector of p-values and alpha value. Returning 1 (passed) or 0 (didnt pass) as controlling false discovery rate.
 }
 \author{
-Your Name, email optional.
+Douglas Wu, wckdouglas@gmail.com.
 
-Maintainer: Your Name <your@email.com>
+Maintainer: Douglas Wu <wckdouglas@gmail.com>
 }
 \references{
-  This optional section can contain literature or other references for
-  background information.
+
 }
 % Optionally other standard keywords, one per line,
 % from the file KEYWORDS in the R documentation.
 \keyword{ package }
 \seealso{
-  Optional links to other man pages
-}
-\examples{
-  # Optional simple examples of the most important functions
+  https://github.com/wckdouglas/tgirt-hamr
 }

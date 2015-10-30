@@ -6,6 +6,18 @@
 
 using namespace Rcpp;
 
+// fdr_control
+NumericVector fdr_control(NumericVector p, double alpha);
+RcppExport SEXP tgirthamr_fdr_control(SEXP pSEXP, SEXP alphaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericVector >::type p(pSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    __result = Rcpp::wrap(fdr_control(p, alpha));
+    return __result;
+END_RCPP
+}
 // string_split
 stringList string_split(stringList x, char sep, int num);
 RcppExport SEXP tgirthamr_string_split(SEXP xSEXP, SEXP sepSEXP, SEXP numSEXP) {
