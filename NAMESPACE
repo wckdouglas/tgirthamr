@@ -1,0 +1,3 @@
+useDynLib(tgirthamr)
+exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp, evalCpp)
