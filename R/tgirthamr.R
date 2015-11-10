@@ -24,9 +24,8 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
                  pCutOff,resultFile,hyp, dbpath,devMode) {
     suppressMessages(library(dplyr))
     suppressMessages(library(stringr))
-    suppressMessages(library(readr))
     dataTable <- str_c(dbpath,'/',enzyme,'Table.tsv') %>%
-        read_tsv(col_type= 'cncnnnnnnncc') %>%
+        readr::read_tsv(col_type= 'cncnnnnnnncc') %>%
         transformDF(seqErr,pCutOff,binomTest) %>%
         filterSets(hyp) %>%
         rename(label=abbrev) %>%
@@ -43,27 +42,27 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
         tbl_df
     
     predictTable <- predictTable %>%
-        read_tsv %>%
+        readr::read_tsv %>%
         transformPredict(seqErr,pCutOff,binomTest) %>%
         filterSets(hyp) 
     message('Read Data!')
     
     bases = as.character(unique(predictTable$ref))
-    tablename <- resultFile
     result <- lapply(bases,fitAndPredict,dataTable,predictTable,model)  %>%
         do.call(rbind,.) 
     
-    if (length(result)<1){stop("No modification sites! \n")}
+    if (length(result)<1){stop("No modification sites are detected!\n")}
     else{
         if (devMode==1){
             result %>%
                 select(chrom, start, end, ref, cov, strand, A, C, T, G, deletion, label) %>%
-                write.table(tablename, sep='\t',quote=F,row.names=F,col.names=F)
+                readr::write_tsv(resultFile, append = FALSE,col_names = F)
+                #write.table(resultFile, sep='\t',quote=F,row.names=F,col.names=F)
         }else{
             result %>%
                 select(chrom, start, end, ref, cov, strand, label) %>%
-                write.table(tablename, sep='\t',quote=F,row.names=F,col.names=F)
+                readr::write_tsv(resultFile, append = FALSE,col_names = F)
         }
-        message('Written ', tablename)
+        message('Written ', resultFile)
     }
 }

@@ -22,9 +22,9 @@ modeling <- function(base,df, model){
     columns <- columns[!grepl(base, columns)]
     df <- df[df$ref==base,columns]
     #split data
-    trainMat <- select(df, -label)
+    trainMat <- subset(df,select=-label)
     trainClass <- factor(df$label)
-    if (length(unique(trainClass)) > 1){
+    if (length(levels(trainClass)) > 1){
         message ('Start training ',model,' ',base)
         modelFit <- train(y = trainClass, x = trainMat, method = model, trControl = fitControl)
         message('Trained ',model, ' for ',base)

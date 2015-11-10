@@ -15,7 +15,6 @@
 predicting <- function(base,model,df){
     #subsetting data
     message ('start prediction')
-    df <- subset(df,ref == base )
     columns <- c('A','C','T','G','deletion')
     columns <- columns[!grepl(base,columns)]
     dataMat <- df[df$ref==base,columns]
