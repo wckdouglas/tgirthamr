@@ -7,5 +7,11 @@ Author: Douglas Wu
 Maintainer: Douglas Wu <wckdouglas@gmail.com>
 Description: This package intends to speed up the analysis of TGIRT-HAMR. and is needed for the tgirt-hamr softwares
 License: GPL (>= 2)
-Imports: Rcpp (>= 0.12.1)
+Imports: Rcpp (>= 0.12.1),
+        dplyr,
+        stringr,
+        caret,
+        randomForest,
+        readr,
+        getopt
 LinkingTo: Rcpp
