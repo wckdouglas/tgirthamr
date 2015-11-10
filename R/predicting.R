@@ -19,6 +19,6 @@ predicting <- function(base,model,df){
     columns <- c('A','C','T','G','deletion')
     columns <- columns[!grepl(base,columns)]
     dataMat <- df[df$ref==base,columns]
-    df$label <- caret::predict(model$finalModel,dataMat,type = 'class')
+    df$label <- predict(model$finalModel,dataMat,type = 'class')
     return (df)
 }
