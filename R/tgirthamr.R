@@ -29,6 +29,7 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
         read_tsv(col_type= 'cncnnnnnnncc') %>%
         transformDF(seqErr,pCutOff,binomTest) %>%
         filterSets(hyp) %>%
+        rename(label=abbrev) %>%
         group_by(label) %>% 
         do(data.frame(count = nrow(.),
                       A = .$A, 
