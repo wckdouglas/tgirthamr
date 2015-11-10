@@ -1,4 +1,4 @@
-#' prediction
+#'  fit and prediction
 #'
 #' This function is for modeling the distribution of errors 
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fitAndPredict.R
 \name{fitAndPredict}
 \alias{fitAndPredict}
-\title{prediction}
+\title{fit and prediction}
 \usage{
 fitAndPredict(base, dataTable, predictTable, model)
 }
