@@ -9,14 +9,6 @@ string_split <- function(x, sep, num) {
     .Call('tgirthamr_string_split', PACKAGE = 'tgirthamr', x, sep, num)
 }
 
-mergeType <- function(realbase) {
-    .Call('tgirthamr_mergeType', PACKAGE = 'tgirthamr', realbase)
-}
-
-mergeTypeList <- function(realbase) {
-    .Call('tgirthamr_mergeTypeList', PACKAGE = 'tgirthamr', realbase)
-}
-
 heterozygote <- function(A, C, T, G, cov) {
     .Call('tgirthamr_heterozygote', PACKAGE = 'tgirthamr', A, C, T, G, cov)
 }

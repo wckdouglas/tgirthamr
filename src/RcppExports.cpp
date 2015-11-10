@@ -31,28 +31,6 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// mergeType
-string mergeType(string realbase);
-RcppExport SEXP tgirthamr_mergeType(SEXP realbaseSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< string >::type realbase(realbaseSEXP);
-    __result = Rcpp::wrap(mergeType(realbase));
-    return __result;
-END_RCPP
-}
-// mergeTypeList
-stringList mergeTypeList(stringList realbase);
-RcppExport SEXP tgirthamr_mergeTypeList(SEXP realbaseSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< stringList >::type realbase(realbaseSEXP);
-    __result = Rcpp::wrap(mergeTypeList(realbase));
-    return __result;
-END_RCPP
-}
 // heterozygote
 vector<double> heterozygote(NumericVector A, NumericVector C, NumericVector T, NumericVector G, NumericVector cov);
 RcppExport SEXP tgirthamr_heterozygote(SEXP ASEXP, SEXP CSEXP, SEXP TSEXP, SEXP GSEXP, SEXP covSEXP) {
