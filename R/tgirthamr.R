@@ -22,9 +22,9 @@
 
 tgirthamr <- function(predictTable,model,enzyme,seqErr,
                  pCutOff,resultFile,hyp, dbpath,devMode) {
-    library(dplyr)
-    library(stringr)
-    library(readr)
+    suppressMessages(library(dplyr))
+    suppressMessages(library(stringr))
+    suppressMessages(library(readr))
     dataTable <- str_c(dbpath,'/',enzyme,'Table.tsv') %>%
         read_tsv(col_type= 'cncnnnnnnncc') %>%
         transformDF(seqErr,pCutOff,binomTest) %>%
@@ -64,5 +64,6 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
                 select(chrom, start, end, ref, cov, strand, label) %>%
                 write.table(tablename, sep='\t',quote=F,row.names=F,col.names=F)
         }
+        message('Written ', tablename)
     }
 }
