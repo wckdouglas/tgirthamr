@@ -57,12 +57,11 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
         if (devMode==1){
             result %>%
                 select(chrom, start, end, ref, cov, strand, A, C, T, G, deletion, label) %>%
-                write_tsv(resultFile, append = FALSE,col_names = F)
-                #write.table(resultFile, sep='\t',quote=F,row.names=F,col.names=F)
+                write_tsv(resultFile, append = F,col_names = F)
         }else{
             result %>%
                 select(chrom, start, end, ref, cov, strand, label) %>%
-                write_tsv(resultFile, append = FALSE,col_names = F)
+                write_tsv(resultFile, append = F,col_names = F)
         }
         message('Written ', resultFile)
     }
