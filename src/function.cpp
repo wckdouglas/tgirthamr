@@ -113,6 +113,7 @@ stringList string_split(stringList x, char sep, int num)
     return result;
 }
 
+//[[Rcpp::export]]
 string mergeType(string realbase)
 {
 		string base = realbase;

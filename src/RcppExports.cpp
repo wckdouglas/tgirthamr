@@ -31,6 +31,17 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// mergeType
+string mergeType(string realbase);
+RcppExport SEXP tgirthamr_mergeType(SEXP realbaseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< string >::type realbase(realbaseSEXP);
+    __result = Rcpp::wrap(mergeType(realbase));
+    return __result;
+END_RCPP
+}
 // mergeTypeList
 stringList mergeTypeList(stringList realbase);
 RcppExport SEXP tgirthamr_mergeTypeList(SEXP realbaseSEXP) {
