@@ -8,7 +8,6 @@
 #' @param seqErr: theoretical sequencin/PCR error  \code{inputParameter4}
 #' @param pCutOff: false discovery rate threshold  \code{inputParameter5}
 #' @param hyp: hypothesis to use  \code{inputParameter6}
-#' @param dbpath: the path storing the database  \code{inputParameter7}
 #' @param devMode: 1 or 0 for outputing data that with extensive information or not \code{inputParameter8} 
 #'
 #' @return df: return original data fram with a new column with the predicted class
@@ -21,7 +20,7 @@
 #' R code here showing how your function works
 
 tgirthamr <- function(predictTable,model,enzyme,seqErr,
-                 pCutOff,resultFile,hyp, dbpath,devMode) {
+                 pCutOff,resultFile,hyp ,devMode) {
     suppressMessages(library(dplyr))
     suppressMessages(library(stringr))
     suppressMessages(library(readr))
