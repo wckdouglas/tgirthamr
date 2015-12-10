@@ -31,11 +31,11 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
         filterSets(hyp) %>%
         rename(label=abbrev) %>%
         group_by(label) %>% 
-        do(data.frame(count = nrow(.),
+        do(data_frame(count = nrow(.),
                       A = .$A, 
                       C = .$C, 
-                      T=.$T,
-                      G=.$G,
+                      T = .$T,
+                      G = .$G,
                       ref = .$ref,
                       deletion = .$deletion)) %>%
         filter(count > 2) %>%
