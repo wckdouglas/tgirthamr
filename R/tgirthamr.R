@@ -27,7 +27,6 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
     tablename <- c(paste0(enzyme,'Table'))
     data(list=tablename,package='tgirthamr')
     dataTable <- table %>%
-        read_tsv(col_type= 'cncnnnnnnncc') %>%
         transformDF(seqErr,pCutOff,binomTest) %>%
         filterSets(hyp) %>%
         rename(label=abbrev) %>%
