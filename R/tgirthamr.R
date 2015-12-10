@@ -24,7 +24,7 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
     suppressMessages(library(dplyr))
     suppressMessages(library(stringr))
     suppressMessages(library(readr))
-    tablename <- paste0(enzyme,'Table')
+    tablename <- c(paste0(enzyme,'Table'))
     data(list=tablename,package='tgirthamr')
     dataTable <- table %>%
         read_tsv(col_type= 'cncnnnnnnncc') %>%
