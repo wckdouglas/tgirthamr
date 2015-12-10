@@ -18,7 +18,6 @@ predicting <- function(base,model,df){
     columns <- c('A','C','T','G','deletion')
     columns <- columns[!grepl(base,columns)]
     df <- subset(df,ref==base)
-    dataMat <- df[,columns]
-    df$label <- predict(model$finalModel,dataMat,type = 'class')
+    df$label <- predict(model$finalModel,df[,columns],type = 'class')
     return (df)
 }
