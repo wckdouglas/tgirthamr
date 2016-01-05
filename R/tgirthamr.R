@@ -43,9 +43,13 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
         tbl_df
     
     predictTable <- predictTable %>%
-        read_tsv() %>%
-        transformPredict(seqErr,pCutOff,binomTest) %>%
-        filterSets(hyp) 
+        read_tsv() 
+    if (nrow(predictTable)==0){stop('No modification detected')}
+    else{
+        predictTable = predictTable %>%
+            transformPredict(seqErr,pCutOff,binomTest) %>%
+            filterSets(hyp) 
+    }
     message('Read Data!')
     
     bases = as.character(unique(predictTable$ref))
