@@ -44,7 +44,7 @@ tgirthamr <- function(predictTable,model,enzyme,seqErr,
     
     predictTable <- predictTable %>%
         read_tsv() 
-    if (nrow(predictTable)==0){stop('No modification detected')}
+    if (nrow(predictTable)==0){stop('No modification detected\n')}
     else{
         predictTable = predictTable %>%
             transformPredict(seqErr,pCutOff,binomTest) %>%
